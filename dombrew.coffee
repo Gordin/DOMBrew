@@ -81,6 +81,8 @@ class Node
       ('_brew' of node) && (node = node.dom())
       @e.appendChild node
     @
+  # alias for append
+  c: @::append
 
   # prepend(children... or [children])
   prepend: ->
@@ -92,6 +94,7 @@ class Node
     @
 
   dom  : -> @e
+  text : -> @e
   html : -> div = d.createElement('div'); div.appendChild(@e); div.innerHTML
 
 Node::asDOM  = Node::dom
