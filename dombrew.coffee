@@ -77,7 +77,7 @@ class Node
   append: ->
     a = arguments
     for  node, i in a
-     a[i] = window.T(node) if typeof node is "string"
+     a[i] = window.$t(node) if typeof node is "string"
     a = a[0] if "splice" of a[0]
     for node in a
       ('_brew' of node) && (node = node.dom())
@@ -90,7 +90,7 @@ class Node
   prepend: ->
     a = arguments
     for  node, i in a
-     a[i] = window.T(node) if typeof node is "string"
+     a[i] = window.$t(node) if typeof node is "string"
     a = a[0] if "splice" of a[0]
     for node in a
       ('_brew' of node) && (node = node.dom())
@@ -120,13 +120,13 @@ Node::asHTML = Node::html
 
 D.VERSION = D.version = '1.4.3'
 
-SPAN = (arg1, args...) ->
+$sp = (arg1, args...) ->
   D "span#{arg1}", args...
 
-DIV = (arg1, args...) ->
+$div = (arg1, args...) ->
   D "div#{arg1}", args...
 
-T = (args...) ->
+$t = (args...) ->
   D "text", args...
 
 # innerText fix (Firefox)

@@ -1,4 +1,4 @@
-var D, DIV, Node, SPAN, T, d,
+var $div, $sp, $t, D, Node, d,
   __slice = Array.prototype.slice;
 
 d = document;
@@ -97,7 +97,7 @@ Node = (function() {
     a = arguments;
     for (i = 0, _len = a.length; i < _len; i++) {
       node = a[i];
-      if (typeof node === "string") a[i] = window.T(node);
+      if (typeof node === "string") a[i] = window.$t(node);
     }
     if ("splice" in a[0]) a = a[0];
     for (_i = 0, _len2 = a.length; _i < _len2; _i++) {
@@ -115,7 +115,7 @@ Node = (function() {
     a = arguments;
     for (i = 0, _len = a.length; i < _len; i++) {
       node = a[i];
-      if (typeof node === "string") a[i] = window.T(node);
+      if (typeof node === "string") a[i] = window.$t(node);
     }
     if ("splice" in a[0]) a = a[0];
     for (_i = 0, _len2 = a.length; _i < _len2; _i++) {
@@ -170,19 +170,19 @@ this.DOMBrew = D = function() {
 
 D.VERSION = D.version = '1.4.3';
 
-SPAN = function() {
+$sp = function() {
   var arg1, args;
   arg1 = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
   return D.apply(null, ["span" + arg1].concat(__slice.call(args)));
 };
 
-DIV = function() {
+$div = function() {
   var arg1, args;
   arg1 = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
   return D.apply(null, ["div" + arg1].concat(__slice.call(args)));
 };
 
-T = function() {
+$t = function() {
   var args;
   args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
   return D.apply(null, ["text"].concat(__slice.call(args)));
