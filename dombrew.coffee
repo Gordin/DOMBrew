@@ -116,6 +116,15 @@ Node::asHTML = Node::html
 
 D.VERSION = D.version = '1.4.3'
 
+SPAN = (arg1, args...) ->
+  D "span#{arg1}", args...
+
+DIV = (arg1, args...) ->
+  D "div#{arg1}", args...
+
+T = (args...) ->
+  D "text", args...
+
 # innerText fix (Firefox)
 if (navigator.appName != 'Microsoft Internet Explorer') && !HTMLElement::innerText && HTMLElement::__defineGetter__
   HTMLElement::__defineGetter__ "innerText", -> @textContent

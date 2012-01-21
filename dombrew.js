@@ -1,4 +1,5 @@
-var D, Node, d;
+var D, DIV, Node, SPAN, T, d,
+  __slice = Array.prototype.slice;
 
 d = document;
 
@@ -103,6 +104,8 @@ Node = (function() {
     return this;
   };
 
+  Node.prototype.c = Node.prototype.append;
+
   Node.prototype.prepend = function() {
     var a, node, _i, _len;
     a = arguments;
@@ -116,6 +119,10 @@ Node = (function() {
   };
 
   Node.prototype.dom = function() {
+    return this.e;
+  };
+
+  Node.prototype.text = function() {
     return this.e;
   };
 
@@ -154,6 +161,24 @@ this.DOMBrew = D = function() {
 };
 
 D.VERSION = D.version = '1.4.3';
+
+SPAN = function() {
+  var arg1, args;
+  arg1 = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+  return D.apply(null, ["span" + arg1].concat(__slice.call(args)));
+};
+
+DIV = function() {
+  var arg1, args;
+  arg1 = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+  return D.apply(null, ["div" + arg1].concat(__slice.call(args)));
+};
+
+T = function() {
+  var args;
+  args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+  return D.apply(null, ["text"].concat(__slice.call(args)));
+};
 
 if ((navigator.appName !== 'Microsoft Internet Explorer') && !HTMLElement.prototype.innerText && HTMLElement.prototype.__defineGetter__) {
   HTMLElement.prototype.__defineGetter__("innerText", function() {
