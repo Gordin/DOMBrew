@@ -97,7 +97,7 @@ class Node
 Node::asDOM  = Node::dom
 Node::asHTML = Node::html
 
-# DOMbrew(nodes... or [nodes])
+# DOMBrew(nodes... or [nodes])
 @DOMBrew = D = ->
   a = arguments
   # If passed an array, wrap it in a DocumentFragment
