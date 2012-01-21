@@ -93,10 +93,14 @@ Node = (function() {
   }
 
   Node.prototype.append = function() {
-    var a, node, _i, _len;
+    var a, i, node, _i, _len, _len2;
     a = arguments;
+    for (i = 0, _len = a.length; i < _len; i++) {
+      node = a[i];
+      if (typeof node === "string") a[i] = window.T(node);
+    }
     if ("splice" in a[0]) a = a[0];
-    for (_i = 0, _len = a.length; _i < _len; _i++) {
+    for (_i = 0, _len2 = a.length; _i < _len2; _i++) {
       node = a[_i];
       ('_brew' in node) && (node = node.dom());
       this.e.appendChild(node);
@@ -107,10 +111,14 @@ Node = (function() {
   Node.prototype.c = Node.prototype.append;
 
   Node.prototype.prepend = function() {
-    var a, node, _i, _len;
+    var a, i, node, _i, _len, _len2;
     a = arguments;
+    for (i = 0, _len = a.length; i < _len; i++) {
+      node = a[i];
+      if (typeof node === "string") a[i] = window.T(node);
+    }
     if ("splice" in a[0]) a = a[0];
-    for (_i = 0, _len = a.length; _i < _len; _i++) {
+    for (_i = 0, _len2 = a.length; _i < _len2; _i++) {
       node = a[_i];
       ('_brew' in node) && (node = node.dom());
       this.e.insertBefore(node, this.e.firstChild);

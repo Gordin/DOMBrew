@@ -76,6 +76,8 @@ class Node
   # append(children... or [children])
   append: ->
     a = arguments
+    for  node, i in a
+     a[i] = window.T(node) if typeof node is "string"
     a = a[0] if "splice" of a[0]
     for node in a
       ('_brew' of node) && (node = node.dom())
@@ -87,6 +89,8 @@ class Node
   # prepend(children... or [children])
   prepend: ->
     a = arguments
+    for  node, i in a
+     a[i] = window.T(node) if typeof node is "string"
     a = a[0] if "splice" of a[0]
     for node in a
       ('_brew' of node) && (node = node.dom())
