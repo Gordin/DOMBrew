@@ -79,9 +79,11 @@ class Node
     for  node, i in a
      a[i] = window.$t(node) if typeof node is "string"
     a = a[0] if "splice" of a[0]
+    tmp = @e
     for node in a
       ('_brew' of node) && (node = node.dom())
       @e.appendChild node
+      @e = tmp
     @
   # alias for append
   c: @::append
@@ -92,9 +94,32 @@ class Node
     for  node, i in a
      a[i] = window.$t(node) if typeof node is "string"
     a = a[0] if "splice" of a[0]
+    tmp = @e
     for node in a
       ('_brew' of node) && (node = node.dom())
       @e.insertBefore(node, @e.firstChild)
+      @e = tmp
+    @
+
+  sp: (args...) ->
+    @append [window.$sp(args...)]
+    @d
+    @
+
+  div: (args...) ->
+    @append [window.$div(args...)]
+    @d
+    @
+
+  t: (text) ->
+    @append text
+
+  u: ->
+    @e = @e.parentNode
+    @
+
+  d: ->
+    @e = @e.lastChild
     @
 
   dom  : -> @e

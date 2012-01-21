@@ -93,17 +93,19 @@ Node = (function() {
   }
 
   Node.prototype.append = function() {
-    var a, i, node, _i, _len, _len2;
+    var a, i, node, tmp, _i, _len, _len2;
     a = arguments;
     for (i = 0, _len = a.length; i < _len; i++) {
       node = a[i];
       if (typeof node === "string") a[i] = window.$t(node);
     }
     if ("splice" in a[0]) a = a[0];
+    tmp = this.e;
     for (_i = 0, _len2 = a.length; _i < _len2; _i++) {
       node = a[_i];
       ('_brew' in node) && (node = node.dom());
       this.e.appendChild(node);
+      this.e = tmp;
     }
     return this;
   };
@@ -111,18 +113,50 @@ Node = (function() {
   Node.prototype.c = Node.prototype.append;
 
   Node.prototype.prepend = function() {
-    var a, i, node, _i, _len, _len2;
+    var a, i, node, tmp, _i, _len, _len2;
     a = arguments;
     for (i = 0, _len = a.length; i < _len; i++) {
       node = a[i];
       if (typeof node === "string") a[i] = window.$t(node);
     }
     if ("splice" in a[0]) a = a[0];
+    tmp = this.e;
     for (_i = 0, _len2 = a.length; _i < _len2; _i++) {
       node = a[_i];
       ('_brew' in node) && (node = node.dom());
       this.e.insertBefore(node, this.e.firstChild);
+      this.e = tmp;
     }
+    return this;
+  };
+
+  Node.prototype.sp = function() {
+    var args;
+    args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+    this.append([window.$sp.apply(window, args)]);
+    this.d;
+    return this;
+  };
+
+  Node.prototype.div = function() {
+    var args;
+    args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+    this.append([window.$div.apply(window, args)]);
+    this.d;
+    return this;
+  };
+
+  Node.prototype.t = function(text) {
+    return this.append(text);
+  };
+
+  Node.prototype.u = function() {
+    this.e = this.e.parentNode;
+    return this;
+  };
+
+  Node.prototype.d = function() {
+    this.e = this.e.lastChild;
     return this;
   };
 
